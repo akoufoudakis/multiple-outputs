@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<semantic:definitions xmlns:semantic="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns="http://www.trisotech.com/definitions/_365b96a7-5dab-4633-8baa-8669dc3b71df777" xmlns:feel="http://www.omg.org/spec/FEEL/20140401" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:trisofeed="http://trisotech.com/feed" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="DMN Modeler" exporterVersion="5.2.14.2" id="_365b96a7-5dab-4633-8baa-8669dc3b71df" name="Final decision type" namespace="http://www.trisotech.com/definitions/_365b96a7-5dab-4633-8baa-8669dc3b71df" triso:logoChoice="Default">
+  <semantic:extensionElements/>
+  <semantic:itemDefinition isCollection="false" label="Decision Multi Type" name="Decision_Multi_Type">
+    <semantic:itemComponent id="_7cebb59a-cdd5-4e2a-b6cb-e5ca5c655deb" name="Decision status">
+      <semantic:typeRef>feel:string</semantic:typeRef>
+    </semantic:itemComponent>
+    <semantic:itemComponent id="_86ae2475-3720-48eb-b105-466eeb4e533b" name="Complete status">
+      <semantic:typeRef>feel:boolean</semantic:typeRef>
+    </semantic:itemComponent>
+  </semantic:itemDefinition>
+  <semantic:itemDefinition isCollection="false" label="tFinaldecision" name="tFinaldecision">
+    <semantic:itemComponent id="_67d7ba5b-3b44-4256-b8f2-e4c98b9c7183" isCollection="false" name="Final decision">
+      <semantic:typeRef>Decision_Multi_Type</semantic:typeRef>
+    </semantic:itemComponent>
+    <semantic:itemComponent id="_7c935622-21d9-493a-b314-c7f51512a484" isCollection="false" name="xcv">
+      <semantic:typeRef>feel:string</semantic:typeRef>
+    </semantic:itemComponent>
+  </semantic:itemDefinition>
+  <semantic:inputData id="_3e61a5be-9219-426d-9420-910892e50ae1" name="Name submitted">
+    <semantic:variable id="_742d6d73-7918-4436-a55b-ee9e18f66836" name="Name submitted" typeRef="feel:boolean"/>
+  </semantic:inputData>
+  <semantic:inputData id="_edce7dea-adf0-4c5a-a73a-59214f65ebb8" name="Address submitted">
+    <semantic:variable id="_8cfeeabb-25bc-48a4-82d4-f482147d1580" name="Address submitted" typeRef="feel:boolean"/>
+  </semantic:inputData>
+  <semantic:decision id="_59439a4a-834c-4174-bd0c-dc351cf12588" name="Final decision">
+    <semantic:variable id="_f5db9f46-f5c8-44b9-9ab0-4b65d2286995" name="Final decision" typeRef="Decision_Multi_Type"/>
+    <semantic:informationRequirement>
+      <semantic:requiredInput href="#_3e61a5be-9219-426d-9420-910892e50ae1"/>
+    </semantic:informationRequirement>
+    <semantic:informationRequirement>
+      <semantic:requiredInput href="#_edce7dea-adf0-4c5a-a73a-59214f65ebb8"/>
+    </semantic:informationRequirement>
+    <semantic:decisionTable hitPolicy="UNIQUE" id="_a1aecd1b-b00a-4709-9578-8fce885f4896" outputLabel="Final decision">
+      <semantic:input id="_2e277d20-eae4-4610-a353-eb945eca9687">
+        <semantic:inputExpression typeRef="feel:boolean">
+          <semantic:text>Name submitted</semantic:text>
+        </semantic:inputExpression>
+      </semantic:input>
+      <semantic:input id="_abc9b26c-cffe-42dd-88bf-59199595f8d1">
+        <semantic:inputExpression typeRef="feel:boolean">
+          <semantic:text>Address submitted</semantic:text>
+        </semantic:inputExpression>
+      </semantic:input>
+      <semantic:output id="_e2ff0f42-8690-496e-98d0-504ae55fc922" name="Decision status" typeRef="feel:string"/>
+      <semantic:output id="_05de3c8c-4e75-40be-92e7-53651483d49b" name="Complete status" typeRef="feel:boolean"/>
+      <semantic:rule id="_b31d9ba3-f604-4e3a-92b1-7a5bb57c59ef">
+        <semantic:inputEntry id="_1ec85c48-0ca6-4336-a652-62b82fade4fe">
+          <semantic:text>true</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_2f58f491-45a7-44f1-8756-9dcefb9526f1">
+          <semantic:text>true</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_88082c16-95dd-4f0e-9b7a-899fb29caa21">
+          <semantic:text>"Complete"</semantic:text>
+        </semantic:outputEntry>
+        <semantic:outputEntry id="_75d5724c-970f-4b2f-a241-5ae0c3526937">
+          <semantic:text>true</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+      <semantic:rule id="_492d0a3d-36ff-4684-9d6a-5f7a827c11d0">
+        <semantic:inputEntry id="_7c2a2872-d5cc-437d-b7d6-c1918dac5c6e">
+          <semantic:text>false</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_b9ed878b-6ab3-4765-99b3-9e734f449c9c">
+          <semantic:text>-</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_acbb1508-490c-4110-80a0-1edb7bc001f8">
+          <semantic:text>"Incomplete"</semantic:text>
+        </semantic:outputEntry>
+        <semantic:outputEntry id="_313ee1c6-a243-479a-85c6-e1f2b69ec359">
+          <semantic:text>false</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+      <semantic:rule id="_ed444745-440f-412f-8c68-2d9cd92564d1">
+        <semantic:inputEntry id="_651b7d38-88f8-4d1f-9c25-04fca57d1148">
+          <semantic:text>-</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_62539e6e-a207-442f-901e-8c1be7627484">
+          <semantic:text>false</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_cb957658-d143-478a-ac32-a59ead68aa89">
+          <semantic:text>"Incomplete"</semantic:text>
+        </semantic:outputEntry>
+        <semantic:outputEntry id="_afd96bd6-dc6c-453d-b465-42017c7e0593">
+          <semantic:text>false</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+    </semantic:decisionTable>
+  </semantic:decision>
+</semantic:definitions>
